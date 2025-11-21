@@ -1,6 +1,7 @@
 package com.example.mc_lv1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,8 @@ public class SummaryFragment extends Fragment {
     private String sTxtPrezime = "";
     private String sTxtDatum = "";
     private String sTxtPredmet = "";
+
+    private Uri uSlika = Uri.parse("");
 
     private Button oBtn;
     private SharedViewModel sharedViewModel;
@@ -77,6 +80,11 @@ public class SummaryFragment extends Fragment {
             oTxtPredmet.setText(noviPredmet);
         });
 
+
+        sharedViewModel.getSlika().observe(getViewLifecycleOwner(), novaSlika -> {
+            uSlika = novaSlika;
+        });
+
         oBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +94,7 @@ public class SummaryFragment extends Fragment {
                 }
                 else
                 {
-                    Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet);
+                    Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet, uSlika);
                     ApiSingleton.getInstance().addStudent(noviStudent);
                     startActivity(new Intent(getActivity(), HomeActivity.class));
                 }

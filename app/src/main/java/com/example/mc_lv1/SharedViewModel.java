@@ -1,5 +1,7 @@
 package com.example.mc_lv1;
 
+import android.net.Uri;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.LiveData;
@@ -10,6 +12,7 @@ public class SharedViewModel extends ViewModel {
     private MutableLiveData<String> stringPrezime = new MutableLiveData<>();
     private MutableLiveData<String> stringDatumRodjenja = new MutableLiveData<>();
     private MutableLiveData<String> stringPredmet = new MutableLiveData<>();
+    private MutableLiveData<Uri> UriSlika = new MutableLiveData<>();
 
     //Setteri
     public void setIme(String podatak)
@@ -28,6 +31,7 @@ public class SharedViewModel extends ViewModel {
     {
         stringPredmet.setValue(podatak);
     }
+    public void setUriSlika(Uri slika){UriSlika.setValue(slika);}
 
     //Getteri
 
@@ -47,5 +51,6 @@ public class SharedViewModel extends ViewModel {
     {
         return stringPredmet;
     }
+    public LiveData<Uri> getSlika(){return UriSlika;}
 
 }

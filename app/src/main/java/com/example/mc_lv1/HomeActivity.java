@@ -32,10 +32,10 @@ public class HomeActivity extends BaseActivity  {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         StudentAdapter studentAdapter = new StudentAdapter(ApiSingleton.getInstance().getStudenti());
         recyclerView.setAdapter(studentAdapter);
-        Student student = new Student("marko", "markic", "PMA");
-        Student student2 = new Student("ivana", "ivankovic ivanic", "Matematika");
-        ApiSingleton.getInstance().addStudent(student);
-        ApiSingleton.getInstance().addStudent(student2);
+        //Student student = new Student("marko", "markic", "PMA");
+        //Student student2 = new Student("ivana", "ivankovic ivanic", "Matematika");
+        //ApiSingleton.getInstance().addStudent(student);
+        //ApiSingleton.getInstance().addStudent(student2);
 
         oJezici.add("Hrvatski");
         oJezici.add("Engleski");

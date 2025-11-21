@@ -3,10 +3,13 @@ package com.example.mc_lv1;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -54,6 +57,10 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
            studentViewHolder.predmetTextView.setText(student.getPredmet());
            studentViewHolder.studentRedniBroj.setText(String.valueOf(redniBroj) + ".");
 
+           Glide.with(holder.itemView.getContext())
+                   .load(student.getSlika())
+                   .into(studentViewHolder.studentSlika);
+
        }
 
        if(holder instanceof  HeaderViewHolder)
@@ -67,6 +74,7 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView studentTextView;
         TextView predmetTextView;
         TextView studentRedniBroj;
+        ImageView studentSlika;
 
         public StudentViewHolder(View itemView) {
             super(itemView);
@@ -74,6 +82,8 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             studentTextView = itemView.findViewById(R.id.studentImePrezime);
             predmetTextView = itemView.findViewById(R.id.studentPredmet);
             studentRedniBroj= itemView.findViewById(R.id.Rbr);
+            studentSlika = itemView.findViewById(R.id.studentSlika);
+
         }
     }
 

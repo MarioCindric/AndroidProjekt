@@ -19,6 +19,7 @@ public class SummaryActivity extends AppCompatActivity {
     private TextView oTxtSatiLV;
     private TextView oIzborni;
 
+
     private TextView oTxtPredmet;
     private String sTxtIme;
     private String sTxtPredmet;
@@ -28,6 +29,8 @@ public class SummaryActivity extends AppCompatActivity {
     private String sTxtSatiPR;
     private String sTxtSatiLV;
     private String sIzborni;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +75,8 @@ public class SummaryActivity extends AppCompatActivity {
         oBtnKraj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet);
-                ApiSingleton.getInstance().addStudent(noviStudent);
+                //Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet);
+                //ApiSingleton.getInstance().addStudent(noviStudent);
                 startActivity(new Intent(SummaryActivity.this, HomeActivity.class));
 
             }
