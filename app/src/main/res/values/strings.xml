@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MC_LV1</string>
+    <string name="hintIme">Ime</string>
+    <string name="hintPrezime">Prezime</string>
+    <string name="hintDatum">Datum</string>
+    <string name="btnPersonal">Dalje</string>
+    <string name="btnStudent">Dalje</string>
+    <string name="hintPredmet">Predmet</string>
+    <string name="hintProfesor">Profesor</string>
+    <string name="hintPR">Sati PR</string>
+    <string name="hintLV">Sati LV</string>
+    <string name="izborni">Izborni</string>
+    <string name="btnSummary">Završi</string>
+    <string name="btnHome">Dodaj</string>
+    <string name="headerStudenti">Studenti</string>
+    <string name="hello_blank_fragment" translatable="false">Hello</string>
+</resources>

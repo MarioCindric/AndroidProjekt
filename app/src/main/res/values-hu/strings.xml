@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MC_LV1</string>
+    <string name="hintIme">Név</string>
+    <string name="hintPrezime">Vezetéknév</string>
+    <string name="hintDatum">Dátum</string>
+    <string name="btnPersonal">Tovább</string>
+    <string name="btnStudent">Tovább</string>
+    <string name="hintPredmet">Tantárgy</string>
+    <string name="hintProfesor">Tanár</string>
+    <string name="hintPR">Előadás órák</string>
+    <string name="hintLV">Gyakorlat órák</string>
+    <string name="izborni">Választható</string>
+    <string name="btnSummary">Befejez</string>
+    <string name="btnHome">Hozzáadás</string>
+    <string name="headerStudenti">Diákok</string>
+</resources>

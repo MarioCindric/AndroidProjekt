@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MC_LV1</string>
+    <string name="hintIme">Name</string>
+    <string name="hintPrezime">Surname</string>
+    <string name="hintDatum">Date of birth</string>
+    <string name="btnPersonal">Next</string>
+    <string name="btnStudent">Next</string>
+    <string name="hintPredmet">Subject</string>
+    <string name="hintProfesor">Professor</string>
+    <string name="hintPR">Hours LEC</string>
+    <string name="hintLV">Hours DEM</string>
+    <string name="izborni">Optional</string>
+    <string name="btnSummary">Finish</string>
+    <string name="btnHome">Add</string>
+    <string name="headerStudenti">Students</string>
+</resources>

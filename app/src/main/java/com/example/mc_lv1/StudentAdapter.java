@@ -1,0 +1,88 @@
+package com.example.mc_lv1;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    private List<Student> studenti;
+
+    private static final int VIEW_TYPE_HEADER = 0;
+
+    private static final int VIEW_TYPE_STUDENT = 1;
+    public StudentAdapter(List<Student> studenti ) {
+        this.studenti = studenti;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0) {
+            return VIEW_TYPE_HEADER;
+        } else {
+            return VIEW_TYPE_STUDENT;
+        }
+    }
+
+    @NotNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+        if (viewType == VIEW_TYPE_HEADER) {
+            View headerView = LayoutInflater.from(parent.getContext()).inflate(R.layout.header_layout, parent, false);
+            return new HeaderViewHolder(headerView);
+        }else{
+            View studentView = LayoutInflater.from(parent.getContext()).inflate(R.layout.student_item, parent, false);
+            return new StudentViewHolder(studentView);
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+       if(holder instanceof  StudentViewHolder)
+       {
+           StudentViewHolder studentViewHolder = (StudentViewHolder) holder;
+           Student student = studenti.get(position - 1);
+           studentViewHolder.studentTextView.setText(student.getIme() + " " + student.getPrezime());
+           studentViewHolder.predmetTextView.setText(student.getPredmet());
+       }
+
+       if(holder instanceof  HeaderViewHolder)
+       {
+           HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
+           headerViewHolder.txtHeader.setText(R.string.headerStudenti);
+       }
+    }
+
+    public class StudentViewHolder extends RecyclerView.ViewHolder {
+        TextView studentTextView;
+        TextView predmetTextView;
+
+        public StudentViewHolder(View itemView) {
+            super(itemView);
+            studentTextView = itemView.findViewById(R.id.studentImePrezime);
+            predmetTextView = itemView.findViewById(R.id.studentPredmet);
+        }
+    }
+
+    private class HeaderViewHolder extends RecyclerView.ViewHolder{
+        TextView txtHeader;
+
+        HeaderViewHolder(View view){
+            super(view);
+            txtHeader = view.findViewById(R.id.header);
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return studenti.size() + 1;
+    }
+}
+
