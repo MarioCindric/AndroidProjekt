@@ -40,6 +40,8 @@ public class CustomCameraActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_CAMERA_PERMISSION = 200;
     private static final String[] PERMISSIONS = {Manifest.permission.CAMERA};
 
+    private int currentLensFacing = CameraSelector.LENS_FACING_BACK;
+
     private static final String TAG = "CustomCamera";
     private static final String FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS";
 
@@ -65,7 +67,17 @@ public class CustomCameraActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_CODE_CAMERA_PERMISSION);
         }
 
-        // Set capture button click listener
+        // Okretanje kamere, prati koja kamera je trenutno aktivna
+        Button switchCameraButton = findViewById(R.id.btnSwitchCamera);
+        switchCameraButton.setOnClickListener(v -> {
+            if (currentLensFacing == CameraSelector.LENS_FACING_BACK) {
+                currentLensFacing = CameraSelector.LENS_FACING_FRONT;
+            } else {
+                currentLensFacing = CameraSelector.LENS_FACING_BACK;
+            }
+            startCamera();
+        });
+
         cameraCaptureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,8 +123,9 @@ public class CustomCameraActivity extends AppCompatActivity {
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
                 .build();
 
+        // Selektor kamere
         CameraSelector cameraSelector = new CameraSelector.Builder()
-                .requireLensFacing(CameraSelector.LENS_FACING_BACK)
+                .requireLensFacing(currentLensFacing)
                 .build();
 
         executor = Executors.newSingleThreadExecutor();
