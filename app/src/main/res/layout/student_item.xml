@@ -38,7 +38,6 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 app:layout_constraintStart_toStartOf="@id/studentImePrezime"
-                app:layout_constraintEnd_toEndOf="@id/studentImePrezime"
                 app:layout_constraintTop_toBottomOf="@id/studentImePrezime" />
 
             <TextView

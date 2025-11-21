@@ -49,8 +49,11 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
        {
            StudentViewHolder studentViewHolder = (StudentViewHolder) holder;
            Student student = studenti.get(position - 1);
+           int redniBroj = position;
            studentViewHolder.studentTextView.setText(student.getIme() + " " + student.getPrezime());
            studentViewHolder.predmetTextView.setText(student.getPredmet());
+           studentViewHolder.studentRedniBroj.setText(String.valueOf(redniBroj) + ".");
+
        }
 
        if(holder instanceof  HeaderViewHolder)
@@ -63,11 +66,14 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public class StudentViewHolder extends RecyclerView.ViewHolder {
         TextView studentTextView;
         TextView predmetTextView;
+        TextView studentRedniBroj;
 
         public StudentViewHolder(View itemView) {
             super(itemView);
+
             studentTextView = itemView.findViewById(R.id.studentImePrezime);
             predmetTextView = itemView.findViewById(R.id.studentPredmet);
+            studentRedniBroj= itemView.findViewById(R.id.Rbr);
         }
     }
 
