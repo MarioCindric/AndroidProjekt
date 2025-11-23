@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
+// Abstraktna klasa jer se ne instancira, svi drugi activitiju ju nasljeđuju
+// zbog mjenjanja jezika, da se program ne crasha
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
@@ -16,9 +18,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.attachBaseContext(applyLocale(base, lang));
     }
 
+
     private Context applyLocale(Context context, String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
+        Locale locale = new Locale(lang); // jezik
+        Locale.setDefault(locale); //stavlja se kao jezik aplikacije
 
         Configuration config = context.getResources().getConfiguration();
         config.setLocale(locale);

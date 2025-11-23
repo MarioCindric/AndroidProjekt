@@ -48,6 +48,7 @@ public class HomeActivity extends BaseActivity  {
         spinner.setAdapter(oAdapter);
 
 
+        // Postavljanje spinnera
         String lang = getSharedPreferences("lang", MODE_PRIVATE)
                 .getString("code", "hr");
 
@@ -56,6 +57,7 @@ public class HomeActivity extends BaseActivity  {
         else if (lang.equals("en")) pos = 1;
         else pos = 2;
 
+        // Prehodno stavljam poziciju jer setSelection prima int vrijednost a ne string
         spinner.setSelection(pos, false);
 
 
@@ -63,17 +65,23 @@ public class HomeActivity extends BaseActivity  {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                // Pretvara poziciju u code
                 String code = position == 0 ? "hr"
                         : position == 1 ? "en"
                         : "hu";
 
+
+                // trenutni kod
                 String current = getSharedPreferences("lang", MODE_PRIVATE)
                         .getString("code", "hr");
 
+                // ako je isti kao trenutni onda ništa ne radi
                 if (code.equals(current)) {
                     return;
                 }
 
+
+                // Spremanje jezika i resetiranje activitija
                 getSharedPreferences("lang", MODE_PRIVATE)
                         .edit()
                         .putString("code", code)
