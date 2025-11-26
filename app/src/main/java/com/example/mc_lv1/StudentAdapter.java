@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+// STUDENT ADAPTER - POVEZUJE PODATKE I LAYOUT, INFLATA, UZIMA PODATKE IZ LISTE I PUNI view-holder polja.
 public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<Student> studenti;
 

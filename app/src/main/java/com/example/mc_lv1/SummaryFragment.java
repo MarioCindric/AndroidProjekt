@@ -11,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 
 public class SummaryFragment extends Fragment {
@@ -20,11 +23,15 @@ public class SummaryFragment extends Fragment {
     private TextView oTxtPrezime;
     private TextView oTxtDatum;
     private TextView oTxtPredmet;
+    private TextView oTxtProfesor;
+    private ImageView oSlikaProfesor;
 
     private String sTxtIme = "";
     private String sTxtPrezime = "";
     private String sTxtDatum = "";
     private String sTxtPredmet = "";
+    private String sTxtProfesor = "";
+    private String sImgProfesor ="";
 
     private Uri uSlika = Uri.parse("");
 
@@ -52,6 +59,8 @@ public class SummaryFragment extends Fragment {
        oTxtPrezime = view.findViewById(R.id.txtPrezime);
        oTxtDatum = view.findViewById(R.id.txtDatumNovi);
        oTxtPredmet = view.findViewById(R.id.txtPredmet);
+       oTxtProfesor = view.findViewById(R.id.txtProfesor);
+       oSlikaProfesor = view.findViewById(R.id.imgProfesor);
 
        oTxtIme.setText("");
        sharedViewModel.getIme().observe(getViewLifecycleOwner(), novoIme ->{
@@ -79,6 +88,22 @@ public class SummaryFragment extends Fragment {
             sTxtPredmet = noviPredmet;
             oTxtPredmet.setText(noviPredmet);
         });
+
+        oTxtProfesor.setText("");
+        sharedViewModel.getProfesor().observe(getViewLifecycleOwner(), noviProfesor -> {
+                sTxtProfesor = noviProfesor.getIme() + " " + noviProfesor.getPrezime();
+                oTxtProfesor.setText(sTxtProfesor);
+
+            Picasso.get()
+                    .load(noviProfesor.getProfilna())
+                    .placeholder(R.drawable.ic_launcher_background)    // opcionalno
+                    .error(R.drawable.ic_launcher_foreground)           // opcionalno
+                    .into(oSlikaProfesor);
+        });
+
+
+
+
 
 
         sharedViewModel.getSlika().observe(getViewLifecycleOwner(), novaSlika -> {

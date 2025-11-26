@@ -10,10 +10,19 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class StudentInfoFragment extends Fragment {
@@ -21,6 +30,9 @@ public class StudentInfoFragment extends Fragment {
     private AutoCompleteTextView oPredmet;
 
 
+    private Spinner spinnerProfesori;
+
+    private List<Profesor> profesori = new ArrayList<>();
     String [] predmeti = {"Matematika", "PMA", "WPSP", "SPJ", "E-learning"};
 
     private SharedViewModel sharedViewModel;
@@ -37,6 +49,7 @@ public class StudentInfoFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +65,7 @@ public class StudentInfoFragment extends Fragment {
                 android.R.layout.simple_dropdown_item_1line,
                 predmeti);
 
+        spinnerProfesori = view.findViewById(R.id.spinnerProfesor);
         oPredmet = view.findViewById(R.id.autoPredmet);
         oPredmet.setThreshold(2);
         oPredmet.setAdapter(adapter);
@@ -74,6 +88,50 @@ public class StudentInfoFragment extends Fragment {
 
             }
         });
+
+            ApiManager.getInstance()
+                    .profesoriInterface()
+                    .getProfesori()
+                    .enqueue(new Callback<List<Profesor>>() {
+                        @Override
+                        public void onResponse(Call<List<Profesor>> call, Response<List<Profesor>> response) {
+                            if (response.isSuccessful() && response.body() != null) {
+
+                                profesori.clear();
+                                profesori.addAll(response.body());
+
+                                List<String> imena = new ArrayList<>();
+                                for (Profesor p : profesori) {
+                                    imena.add(p.getIme() + " " + p.getPrezime());
+                                }
+
+                                ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                                        getContext(),
+                                        android.R.layout.simple_spinner_item,
+                                        imena
+                                );
+                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                spinnerProfesori.setAdapter(adapter);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Profesor>> call, Throwable t) {
+                            t.printStackTrace();
+                        }
+                    });
+        spinnerProfesori.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Profesor p = profesori.get(position);
+                sharedViewModel.setProfesor(p);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
+
         return view;
     }
 }

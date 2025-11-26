@@ -13,6 +13,7 @@ public class SharedViewModel extends ViewModel {
     private MutableLiveData<String> stringDatumRodjenja = new MutableLiveData<>();
     private MutableLiveData<String> stringPredmet = new MutableLiveData<>();
     private MutableLiveData<Uri> UriSlika = new MutableLiveData<>();
+    private final MutableLiveData<Profesor> profesor = new MutableLiveData<>();
 
     //Setteri
     public void setIme(String podatak)
@@ -32,8 +33,16 @@ public class SharedViewModel extends ViewModel {
         stringPredmet.setValue(podatak);
     }
     public void setUriSlika(Uri slika){UriSlika.setValue(slika);}
+    public void setProfesor(Profesor p) {
+        profesor.setValue(p);
+    }
+
 
     //Getteri
+
+    public LiveData<Profesor> getProfesor() {
+        return profesor;
+    }
 
     public LiveData<String> getIme()
     {
