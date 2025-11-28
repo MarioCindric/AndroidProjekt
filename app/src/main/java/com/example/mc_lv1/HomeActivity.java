@@ -1,5 +1,6 @@
 package com.example.mc_lv1;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ public class HomeActivity extends BaseActivity  {
     Spinner spinner;
     List<String> oJezici = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class HomeActivity extends BaseActivity  {
 
         oBtn = findViewById(R.id.btnHome);
         spinner = findViewById(R.id.spJezik);
+
 
         RecyclerView recyclerView = findViewById(R.id.recycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -96,7 +99,10 @@ public class HomeActivity extends BaseActivity  {
         });
 
 
+
+
         oBtn.setOnClickListener(v ->
-                startActivity(new Intent(HomeActivity.this, CreateNewRecordActivity.class)));
+                //startActivity(new Intent(HomeActivity.this, CreateNewRecordActivity.class)));
+                startActivity(new Intent(HomeActivity.this, PersonalInfoActivity.class)));
     }
 }

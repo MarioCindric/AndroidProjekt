@@ -3,6 +3,7 @@ package com.example.mc_lv1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class SummaryActivity extends AppCompatActivity {
     private String sTxtSatiPR;
     private String sTxtSatiLV;
     private String sIzborni;
+    public Uri uSlika = Uri.parse("");
 
 
 
@@ -72,11 +74,15 @@ public class SummaryActivity extends AppCompatActivity {
 
         oBtnKraj = findViewById(R.id.btnKraj);
 
+        uSlika = Uri.parse("android.resource://"
+                + getPackageName()
+                + "/"
+                + R.drawable.noimage);
         oBtnKraj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet);
-                //ApiSingleton.getInstance().addStudent(noviStudent);
+                Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet, uSlika);
+                ApiSingleton.getInstance().addStudent(noviStudent);
                 startActivity(new Intent(SummaryActivity.this, HomeActivity.class));
 
             }
