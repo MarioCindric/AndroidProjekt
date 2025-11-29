@@ -13,6 +13,8 @@ public class SharedViewModel extends ViewModel {
     private MutableLiveData<String> stringDatumRodjenja = new MutableLiveData<>();
     private MutableLiveData<String> stringPredmet = new MutableLiveData<>();
     private MutableLiveData<Uri> UriSlika = new MutableLiveData<>();
+    private MutableLiveData<Integer> intId = new MutableLiveData<>();
+
     private final MutableLiveData<Profesor> profesor = new MutableLiveData<>();
 
     //Setteri
@@ -36,6 +38,8 @@ public class SharedViewModel extends ViewModel {
     public void setProfesor(Profesor p) {
         profesor.setValue(p);
     }
+
+    public void setId(Integer i){intId.setValue(i);}
 
 
     //Getteri
@@ -61,5 +65,7 @@ public class SharedViewModel extends ViewModel {
         return stringPredmet;
     }
     public LiveData<Uri> getSlika(){return UriSlika;}
+
+    public LiveData<Integer> getId(){return intId;}
 
 }

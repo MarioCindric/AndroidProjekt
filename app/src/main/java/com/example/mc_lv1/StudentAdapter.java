@@ -3,6 +3,7 @@ package com.example.mc_lv1;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,17 +14,22 @@ import com.bumptech.glide.Glide;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // STUDENT ADAPTER - POVEZUJE PODATKE I LAYOUT, INFLATA, UZIMA PODATKE IZ LISTE I PUNI view-holder polja.
 public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<Student> studenti;
+    private List<Student> filtriraniStudenti;
+
 
     private static final int VIEW_TYPE_HEADER = 0;
 
     private static final int VIEW_TYPE_STUDENT = 1;
-    public StudentAdapter(List<Student> studenti ) {
+    public StudentAdapter(List<Student> studenti) {
         this.studenti = studenti;
+        // Kopija originalne liste
+        this.filtriraniStudenti = new ArrayList<>(studenti);
     }
 
     @Override
@@ -51,12 +57,15 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
        if(holder instanceof  StudentViewHolder)
        {
+           // Koristim filtiranu listu radi manipulacije s prikazom
            StudentViewHolder studentViewHolder = (StudentViewHolder) holder;
-           Student student = studenti.get(position - 1);
+           Student student = filtriraniStudenti.get(position - 1);
            int redniBroj = position;
            studentViewHolder.studentTextView.setText(student.getIme() + " " + student.getPrezime());
            studentViewHolder.predmetTextView.setText(student.getPredmet());
            studentViewHolder.studentRedniBroj.setText(String.valueOf(redniBroj) + ".");
+
+
 
            Glide.with(holder.itemView.getContext())
                    .load(student.getSlika())
@@ -99,7 +108,38 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return studenti.size() + 1;
+        //return studenti.size() + 1;
+        return filtriraniStudenti.size() + 1;
     }
+
+    // Funkcija za filtriranje studenata
+    public void filter(String text)
+    {
+        filtriraniStudenti.clear();
+
+        if(text == null || text.trim().isEmpty())
+        {
+            filtriraniStudenti.addAll(studenti);
+        }
+        else
+        {
+            String query = text.toLowerCase();
+
+            for(Student s : studenti)
+            {
+                if(s.getIme().toLowerCase().contains(query) || s.getPrezime().toLowerCase().contains(query)
+                || s.getPredmet().toLowerCase().contains(query))
+                {
+                    filtriraniStudenti.add(s);
+                }
+            }
+        }
+        notifyDataSetChanged();
+
+    }
+
+
+
+
 }
 

@@ -13,4 +13,5 @@
     <string name="btnSummary">Završi</string>
     <string name="btnHome">Dodaj</string>
     <string name="headerStudenti">Studenti</string>
+    <string name="searchBar">Pretraži studente</string>
 </resources>

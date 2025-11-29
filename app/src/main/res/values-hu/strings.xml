@@ -13,4 +13,5 @@
     <string name="btnSummary">Befejez</string>
     <string name="btnHome">Hozzáadás</string>
     <string name="headerStudenti">Diákok</string>
+    <string name="searchBar">Diákokat keresni</string>
 </resources>

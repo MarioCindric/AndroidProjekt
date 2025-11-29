@@ -7,6 +7,7 @@ public class Student {
     private String prezime;
     private String predmet;
 
+
     private Uri slika;
 
     public Student(String ime, String prezime, String predmet, Uri slika)
@@ -21,4 +22,5 @@ public class Student {
     public String getPrezime(){return prezime;}
     public String getPredmet(){return predmet;}
     public Uri getSlika(){return slika;}
+
 }

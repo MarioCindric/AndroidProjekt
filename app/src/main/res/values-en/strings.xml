@@ -13,4 +13,5 @@
     <string name="btnSummary">Finish</string>
     <string name="btnHome">Add</string>
     <string name="headerStudenti">Students</string>
+    <string name="searchBar">Search students</string>
 </resources>

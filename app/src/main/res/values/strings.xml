@@ -14,4 +14,5 @@
     <string name="btnHome">Dodaj</string>
     <string name="headerStudenti">Studenti</string>
     <string name="hello_blank_fragment" translatable="false">Hello</string>
+    <string name="searchBar">Pretraži studente</string>
 </resources>
