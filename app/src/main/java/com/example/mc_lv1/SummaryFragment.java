@@ -31,10 +31,9 @@ public class SummaryFragment extends Fragment {
     private String sTxtDatum = "";
     private String sTxtPredmet = "";
     private String sTxtProfesor = "";
-    private String sImgProfesor ="";
+
 
     private Uri uSlika = Uri.parse("");
-
     private Button oBtn;
     private SharedViewModel sharedViewModel;
 
@@ -76,7 +75,7 @@ public class SummaryFragment extends Fragment {
         });
 
 
-
+        oTxtDatum.setText("");
         sharedViewModel.getDatum().observe(getViewLifecycleOwner(), noviDatum ->{
             sTxtDatum = noviDatum;
             oTxtDatum.setText(noviDatum);
@@ -96,8 +95,8 @@ public class SummaryFragment extends Fragment {
 
             Picasso.get()
                     .load(noviProfesor.getProfilna())
-                    .placeholder(R.drawable.ic_launcher_background)    // opcionalno
-                    .error(R.drawable.ic_launcher_foreground)           // opcionalno
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_launcher_foreground)
                     .into(oSlikaProfesor);
         });
 
@@ -115,11 +114,11 @@ public class SummaryFragment extends Fragment {
             public void onClick(View view) {
                 if(sTxtIme.isEmpty() || sTxtPrezime.isEmpty() ||  sTxtPredmet.isEmpty())
                 {
-                    Toast.makeText(getActivity(), "Unesite sve podatke", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.podaci, Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet, uSlika);
+                    Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet, uSlika, sTxtDatum);
                     ApiSingleton.getInstance().addStudent(noviStudent);
                     startActivity(new Intent(getActivity(), HomeActivity.class));
                 }

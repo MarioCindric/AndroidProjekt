@@ -14,4 +14,8 @@
     <string name="btnHome">Add</string>
     <string name="headerStudenti">Students</string>
     <string name="searchBar">Search students</string>
+    <string name="podaci">Enter all data</string>
+    <string name="btnOkreni">-></string>
+    <string name="btnUslikaj">Capture</string>
+
 </resources>

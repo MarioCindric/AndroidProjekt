@@ -74,7 +74,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(PersonalInfoActivity.this, "Ime je prazno", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PersonalInfoActivity.this, R.string.podaci, Toast.LENGTH_SHORT).show();
                 }
 
             }

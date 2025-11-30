@@ -13,6 +13,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context base) {
+        // Po defaultu hrvatski, stavlja jezik aplikacije
         String lang = base.getSharedPreferences("lang", MODE_PRIVATE)
                 .getString("code", "hr");
         super.attachBaseContext(applyLocale(base, lang));

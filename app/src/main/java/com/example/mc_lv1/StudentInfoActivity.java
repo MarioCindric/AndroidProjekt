@@ -92,7 +92,7 @@ public class StudentInfoActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(StudentInfoActivity.this, "Predmet nije upisan", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StudentInfoActivity.this, R.string.podaci, Toast.LENGTH_SHORT).show();
                 }
             }
         });

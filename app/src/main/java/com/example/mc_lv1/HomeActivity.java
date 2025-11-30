@@ -37,9 +37,6 @@ public class HomeActivity extends BaseActivity  {
         searchView = findViewById(R.id.searchBar);
         //searchView.clearFocus();
 
-
-
-
         // Slika
         uSlika = Uri.parse("android.resource://"
                 + getPackageName()
@@ -49,10 +46,10 @@ public class HomeActivity extends BaseActivity  {
 
         // Ako nema if-a onda se studenti nadodaju kod promjene jezika
         if (ApiSingleton.getInstance().getStudenti().isEmpty()) {
-            Student student = new Student("marko", "markic", "PMA", uSlika);
-            Student student2 = new Student("ivana", "ivankovic ivanic", "PMA", uSlika);
-            Student student3 = new Student("marko", "markic", "PMA", uSlika);
-            Student student4 = new Student("ivana", "ivankovic ivanic", "Matematika", uSlika);
+            Student student = new Student("marko", "markic", "PMA", uSlika, "01.01.2025");
+            Student student2 = new Student("ivana", "ivankovic ivanic", "PMA", uSlika, "01.01.2025");
+            Student student3 = new Student("marko", "markic", "PMA", uSlika, "01.01.2025");
+            Student student4 = new Student("ivana", "ivankovic ivanic", "Matematika", uSlika, "01.01.2025");
             ApiSingleton.getInstance().addStudent(student);
             ApiSingleton.getInstance().addStudent(student2);
             ApiSingleton.getInstance().addStudent(student3);
@@ -83,9 +80,9 @@ public class HomeActivity extends BaseActivity  {
 
 
 
-        // Postavljanje spinnera
+        // čita jezik iz memorije
         String lang = getSharedPreferences("lang", MODE_PRIVATE)
-                .getString("code", "hr");
+                .getString("code", "en");
 
         oJezici.clear();
 
@@ -161,8 +158,8 @@ public class HomeActivity extends BaseActivity  {
 
 
         oBtn.setOnClickListener(v ->
-                //startActivity(new Intent(HomeActivity.this, CreateNewRecordActivity.class)));
-                startActivity(new Intent(HomeActivity.this, PersonalInfoActivity.class)));
+                startActivity(new Intent(HomeActivity.this, CreateNewRecordActivity.class)));
+                //startActivity(new Intent(HomeActivity.this, PersonalInfoActivity.class)));
     }
 
 

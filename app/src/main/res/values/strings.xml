@@ -15,4 +15,9 @@
     <string name="headerStudenti">Studenti</string>
     <string name="hello_blank_fragment" translatable="false">Hello</string>
     <string name="searchBar">Pretraži studente</string>
+    <string name="podaci">Unesite sve podatke</string>
+    <string name="btnOkreni">-></string>
+    <string name="btnUslikaj">Uslikaj</string>
+
+
 </resources>

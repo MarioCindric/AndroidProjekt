@@ -53,7 +53,7 @@ public class SummaryActivity extends AppCompatActivity {
         oTxtDatum.setText(sTxtDatum);
 
         sTxtPredmet = oExtras.getString("predmet");
-        oTxtPredmet = findViewById(R.id.txtDatum);
+        oTxtPredmet = findViewById(R.id.txtPredmet);
         oTxtPredmet.setText(sTxtPredmet);
 
         sTxtProfesor = oExtras.getString("profesor");
@@ -81,9 +81,10 @@ public class SummaryActivity extends AppCompatActivity {
         oBtnKraj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet, uSlika);
+                Student noviStudent = new Student(sTxtIme, sTxtPrezime, sTxtPredmet, uSlika, sTxtDatum);
                 ApiSingleton.getInstance().addStudent(noviStudent);
                 startActivity(new Intent(SummaryActivity.this, HomeActivity.class));
+                finishAffinity();
 
             }
         });

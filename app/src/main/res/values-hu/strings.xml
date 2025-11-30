@@ -14,4 +14,7 @@
     <string name="btnHome">Hozzáadás</string>
     <string name="headerStudenti">Diákok</string>
     <string name="searchBar">Diákokat keresni</string>
+    <string name="podaci">Tantárgy nincs megadva</string>
+    <string name="btnOkreni">-></string>
+    <string name="btnUslikaj">Készítsen képet</string>
 </resources>

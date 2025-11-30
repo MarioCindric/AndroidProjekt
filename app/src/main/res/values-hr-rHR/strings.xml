@@ -14,4 +14,7 @@
     <string name="btnHome">Dodaj</string>
     <string name="headerStudenti">Studenti</string>
     <string name="searchBar">Pretraži studente</string>
+    <string name="podaci">Unesite sve podatke</string>
+    <string name="btnOkreni">-></string>
+    <string name="btnUslikaj">Uslikaj</string>
 </resources>

@@ -61,6 +61,7 @@ public class CustomCameraActivity extends AppCompatActivity {
         cameraCaptureButton = findViewById(R.id.image_capture_button);
         viewFinder = findViewById(R.id.viewFinder);
 
+        // Dopuštenja za kameru
         if (checkPermission()) {
             startCamera();
         } else {
@@ -78,6 +79,7 @@ public class CustomCameraActivity extends AppCompatActivity {
             startCamera();
         });
 
+        // Event za slikanje
         cameraCaptureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,9 +88,11 @@ public class CustomCameraActivity extends AppCompatActivity {
         });
     }
 
+    // Funkcija za proveravanje dopuštenja
     private boolean checkPermission() {
         return ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -103,6 +107,8 @@ public class CustomCameraActivity extends AppCompatActivity {
         }
     }
 
+
+    // Pokretanje kamere
     private void startCamera() {
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         cameraProviderFuture.addListener(new Runnable() {
@@ -118,6 +124,7 @@ public class CustomCameraActivity extends AppCompatActivity {
         }, ContextCompat.getMainExecutor(this));
     }
 
+    // Prikaz kamere
     private void bindPreview(ProcessCameraProvider cameraProvider) {
         Preview preview = new Preview.Builder()
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
@@ -137,6 +144,7 @@ public class CustomCameraActivity extends AppCompatActivity {
         preview.setSurfaceProvider(viewFinder.getSurfaceProvider());
     }
 
+    // Slikanje
     private void captureImage() {
         File photoFile = new File(getBaseContext().getExternalCacheDir() + File.separator + System.currentTimeMillis() + ".png");
         String name = new SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis());

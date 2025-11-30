@@ -64,6 +64,7 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
            studentViewHolder.studentTextView.setText(student.getIme() + " " + student.getPrezime());
            studentViewHolder.predmetTextView.setText(student.getPredmet());
            studentViewHolder.studentRedniBroj.setText(String.valueOf(redniBroj) + ".");
+           studentViewHolder.datumTextView.setText((student.getDatum()));
 
 
 
@@ -85,6 +86,7 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView predmetTextView;
         TextView studentRedniBroj;
         ImageView studentSlika;
+        TextView datumTextView;
 
         public StudentViewHolder(View itemView) {
             super(itemView);
@@ -93,6 +95,7 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             predmetTextView = itemView.findViewById(R.id.studentPredmet);
             studentRedniBroj= itemView.findViewById(R.id.Rbr);
             studentSlika = itemView.findViewById(R.id.studentSlika);
+            datumTextView = itemView.findViewById(R.id.studentDatum);
 
         }
     }
