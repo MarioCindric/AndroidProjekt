@@ -41,7 +41,7 @@ public class HomeActivity extends BaseActivity  {
         uSlika = Uri.parse("android.resource://"
                 + getPackageName()
                 + "/"
-                + R.drawable.noimage);
+                + R.mipmap.noimage);
 
 
         // Ako nema if-a onda se studenti nadodaju kod promjene jezika
@@ -50,10 +50,10 @@ public class HomeActivity extends BaseActivity  {
             Student student2 = new Student("ivana", "ivankovic ivanic", "PMA", uSlika, "01.01.2025");
             Student student3 = new Student("marko", "markic", "PMA", uSlika, "01.01.2025");
             Student student4 = new Student("ivana", "ivankovic ivanic", "Matematika", uSlika, "01.01.2025");
-            ApiSingleton.getInstance().addStudent(student);
+            /*ApiSingleton.getInstance().addStudent(student);
             ApiSingleton.getInstance().addStudent(student2);
             ApiSingleton.getInstance().addStudent(student3);
-            ApiSingleton.getInstance().addStudent(student4);
+            ApiSingleton.getInstance().addStudent(student4);*/
         }
 
         // Recycler view i searchView

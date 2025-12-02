@@ -77,12 +77,12 @@ public class StudentInfoActivity extends AppCompatActivity {
                 summaryAct.putExtra("satiLV", sSatiLV);
                 if(oIzborni.isChecked())
                 {
-                    sIzborni = "Predmet je izborni";
+                    sIzborni = getString(R.string.jeIzborni);//"Predmet je izborni";
                     summaryAct.putExtra("izborni", sIzborni);
                 }
                 else
                 {
-                    sIzborni = "Predmet je obvezan";
+                    sIzborni = getString(R.string.nijeIzborni);
                     summaryAct.putExtra("izborni", sIzborni);
                 }
 

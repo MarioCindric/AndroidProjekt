@@ -18,6 +18,8 @@
     <string name="podaci">Unesite sve podatke</string>
     <string name="btnOkreni">-></string>
     <string name="btnUslikaj">Uslikaj</string>
+    <string name="jeIzborni">Predmet je izborni</string>
+    <string name="nijeIzborni">Predmet nije izborni</string>
 
 
 </resources>
